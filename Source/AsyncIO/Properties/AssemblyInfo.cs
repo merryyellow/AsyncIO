@@ -33,6 +33,6 @@ using System.Runtime.InteropServices;
 // - This keeps NuGet package version and assembly versions in sync.
 // - Caveat: Due to an issue in Visual Studio 2017 v15.5, these numbers might fail to update if this file is open, so double check that 
 //   they have been updated and edit manually if need be.
-[assembly: AssemblyVersion("0.1.42.0")]
-[assembly: AssemblyFileVersion("0.1.42.0")]
+[assembly: AssemblyVersion("0.1.69.0")]
+[assembly: AssemblyFileVersion("0.1.69.0")]
 
