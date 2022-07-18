@@ -22,6 +22,13 @@ namespace AsyncIO.DotNet
         {
             m_socket = new Socket(addressFamily, socketType, protocolType);
 
+            // Sockets are used like this in package com.unity.ide.visualstudio, file Messanger.cs
+            // https://github.com/needle-mirror/com.unity.ide.visualstudio/blob/master/Editor/Messaging/Messenger.cs
+            // -----
+            // Explicitely disable inheritance for our socket handle 
+            // We found that Unity is creating a fork when importing new assets that can clone our socket
+            NativeMethods.DisableHandleInheritance(m_socket);
+
             m_inSocketAsyncEventArgs = new SocketAsyncEventArgs();
             m_inSocketAsyncEventArgs.Completed += OnAsyncCompleted;
 
@@ -32,6 +39,13 @@ namespace AsyncIO.DotNet
         private NativeSocket(Socket socket) : base(socket.AddressFamily, socket.SocketType, socket.ProtocolType)
         {
             m_socket = socket;
+
+            // Sockets are used like this in package com.unity.ide.visualstudio, file Messanger.cs
+            // https://github.com/needle-mirror/com.unity.ide.visualstudio/blob/master/Editor/Messaging/Messenger.cs
+            // -----
+            // Explicitely disable inheritance for our socket handle 
+            // We found that Unity is creating a fork when importing new assets that can clone our socket
+            NativeMethods.DisableHandleInheritance(m_socket);
 
             m_inSocketAsyncEventArgs = new SocketAsyncEventArgs();
             m_inSocketAsyncEventArgs.Completed += OnAsyncCompleted;

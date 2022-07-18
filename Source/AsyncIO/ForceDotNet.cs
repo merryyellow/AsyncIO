@@ -8,6 +8,12 @@ namespace AsyncIO
     {
         internal static bool Forced { get; private set; }
 
+        static ForceDotNet()
+        {
+            // Set to true by default since it's for Unity
+            Forced = true;
+        }
+
         public static void Force()
         {
             Forced = true;
